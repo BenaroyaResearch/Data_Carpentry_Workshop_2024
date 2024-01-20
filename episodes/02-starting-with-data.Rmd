@@ -40,26 +40,28 @@ source("setup.R")
 ### Loading the survey data
 ```
 
-We are investigating the animal species diversity and weights found
-within plots at our study site. The dataset is stored as a comma
-separated value (CSV) file. Each row holds information for a single
-animal, and the columns represent:
+We are investigating clinical data from an investigation lead by
+Hamid involving covid sevirity and patient outcomes. The dataset 
+is stored as a comma separated value (CSV) file. Each row holds 
+information for a single animal, and the columns (not inclusive)
+represent:
 
 | Column          | Description                                  |
 |-----------------|----------------------------------------------|
-| record_id       | Unique id for the observation                |
-| month           | month of observation                         |
-| day             | day of observation                           |
-| year            | year of observation                          |
-| plot_id         | ID of a particular experimental plot of land |
-| species_id      | 2-letter code                                |
-| sex             | sex of animal ("M", "F")                     |
-| hindfoot_length | length of the hindfoot in mm                 |
-| weight          | weight of the animal in grams                |
-| genus           | genus of animal                              |
-| species         | species of animal                            |
-| taxon           | e.g. Rodent, Reptile, Bird, Rabbit           |
-| plot_type       | type of plot                                 |
+| Sample.ID       | Unique id for the observation                |
+| drawDate        | identifier of draw date                      |
+| Covid.ID        | alternative identifier of covid sample       |
+| Score           | severity Score of infection                  |
+| sex             | sex of the patient                           |
+| age             | age of the patient                           |
+| race            | ethinicity of the patient                    |
+| bmi             | body mass indicator of the patient           |
+| patientType     | Covid Status of the patient                  |
+| HighestCare     | Highest level of Care required by patient    |
+| Ever.On.Ventil  | was the patient ever intubated               |
+
+There are additionally columns for flow markers for cell fraction
+information.
 
 ### Downloading the data
 
@@ -75,17 +77,17 @@ file that contains the survey data from Figshare, and we will use
 
 Inside the `download.file` command, the first entry is a character
 string with the source URL
-("<https://ndownloader.figshare.com/files/2292169>"). This source URL
-downloads a CSV file from figshare. The text after the comma
+("<https://github.com/BenaroyaResearch/Data_Carpentry_Workshop_2022/blob/main/WORKSHOP_DATA/Bolouri_2021_subset.csv>").
+ This source URL downloads a CSV file from figshare. The text after the comma
 ("data_raw/portal_data_joined.csv") is the destination of the file on
 your local machine. You'll need to have a folder on your machine called
 "data_raw" where you'll download the file. So this command downloads a
-file from Figshare, names it "portal_data_joined.csv" and adds it to a
+file from github, names it "inputData.csv" and adds it to a
 preexisting folder named "data_raw".
 
 ```{r, eval=FALSE, purl=TRUE}
-download.file(url = "https://ndownloader.figshare.com/files/2292169",
-              destfile = "data_raw/portal_data_joined.csv")
+download.file(url = "https://github.com/BenaroyaResearch/Data_Carpentry_Workshop_2022/blob/main/WORKSHOP_DATA/Bolouri_2021_subset.csv", 
+destfile = "data_raw/inputData.csv")
 ```
 
 ### Reading the data into R
@@ -120,13 +122,13 @@ Now we can use the functions from the **`tidyverse`** package. Let's use
 about data frames later):
 
 ```{r, eval=TRUE, purl=FALSE}
-surveys <- read_csv("data_raw/portal_data_joined.csv")
+surveys <- read_csv("data_raw/inputData.csv")
 ```
 
 When you execute `read_csv` on a data file, it looks through the first
 1000 rows of each column and guesses its data type. For example, in this
-dataset, `read_csv()` reads `weight` as `col_double` (a numeric data
-type), and `species` as `col_character`. You have the option to specify
+dataset, `read_csv()` reads `bmi` as `col_double` (a numeric data
+type), and `race` as `col_character`. You have the option to specify
 the data type for a column manually by using the `col_types` argument in
 `read_csv`.
 
@@ -264,7 +266,7 @@ questions?
 str(surveys)
 
 ## * class: data frame
-## * how many rows: 34786,  how many columns: 13
+## * how many rows: 299,  how many columns: 29
 
 ```
 :::
@@ -352,15 +354,15 @@ also by calling their column names directly:
 
 ```{r, eval=FALSE, purl=FALSE}
 # As before, using single brackets returns a data frame:
-surveys["species_id"]
-surveys[, "species_id"]
+surveys["sex"]
+surveys[, "sex"]
 
 # Double brackets returns a vector:
-surveys[["species_id"]]
+surveys[["sex"]]
 
 # We can also use the $ operator with column names instead of double brackets
 # This returns a vector:
-surveys$species_id
+surveys$sex
 ```
 
 In RStudio, you can use the autocompletion feature to get the full and
@@ -436,7 +438,7 @@ surveys_head <- surveys[-(7:n_rows), ]
 ```
 
 When we did `str(surveys)` we saw that several of the columns consist of
-integers. The columns `genus`, `species`, `sex`, `plot_type`, ...
+integers. The columns `sex`, `HighestCare`, `patientType`, `race`, ...
 however, are of the class `character`. Arguably, these columns contain
 categorical data, that is, they can only take on a limited number of
 values.
@@ -510,23 +512,21 @@ in our example dataset).
 ::: challenge
 ### Challenge
 
-1.  Change the columns `taxa` and `genus` in the `surveys` data frame
+1.  Change the columns `HighestCare` and 'sex'
     into a factor.
 
-2.  Using the functions you learned before, can you find out...
-
--   How many rabbits were observed?
--   How many different genera are in the `genus` column?
+2.  Reorder HighestCare in the following order:
+        - Neg, Floor, CCU, Outpatient
+:::
 
 ::: solution
 ```{r, answer=TRUE, purl=FALSE}
-surveys$taxa <- factor(surveys$taxa)
-surveys$genus <- factor(surveys$genus)
-summary(surveys)
-nlevels(surveys$genus)
-
-## * how many genera: There are 26 unique genera in the `genus` column.
-## * how many rabbts: There are 75 rabbits in the `taxa` column.
+data$sex <- factor(data$sex, levels = c("male","female"))
+levels(data$sex)
+data$HighestCare <- factor(data$HighestCare, levels = c("Neg", "Floor", "CCU", "Outpatient"))
+levels(data$HighestCare)
+summary(data$sex)
+summary(data$HighestCare)
 ```
 :::
 :::
@@ -534,13 +534,11 @@ nlevels(surveys$genus)
 ```{r, echo=FALSE, purl=TRUE}
 ### Challenges:
 ###
-### 1. Change the columns `taxa` and `genus` in the `surveys` data frame into a 
-###    factor.
+### 1.  Change the columns `HighestCare` and 'sex'
+###     into a factor.
 ###
-### 2. Using the functions you learned before, can you find out...
-###
-###      * How many rabbits were observed?
-###      * How many different genera are in the `genus` column?
+### 2.  Reorder HighestCare in the following order:
+###         - Neg, Floor, CCU, Outpatient
 
 ```
 
@@ -555,10 +553,10 @@ as.character(sex)
 
 In some cases, you may have to convert factors where the levels appear
 as numbers (such as concentration levels or years) to a numeric vector.
-For instance, in one part of your analysis the years might need to be
-encoded as factors (e.g., comparing average weights across years) but in
+For instance, in one part of your analysis the draw date might need to be
+encoded as factors (e.g., comparing average weights across draw dates) but in
 another part of your analysis they may need to be stored as numeric
-values (e.g., doing math operations on the years). This conversion from
+values (e.g., doing math operations on the drawdate). This conversion from
 factor to numeric is a little trickier. The `as.numeric()` function
 returns the index values of the factor, not its levels, so it will
 result in an entirely new (and unwanted in this case) set of numbers.
@@ -590,47 +588,47 @@ factor level. Let's look at the number of males and females captured
 over the course of the experiment:
 
 ```{r, purl=TRUE}
-## bar plot of the number of females and males captured during the experiment:
+## bar plot of the number of female and male patients assessed:
 plot(surveys$sex)
 ```
 
-However, as we saw when we used `summary(surveys$sex)`, there are about
-1700 individuals for which the sex information hasn't been recorded. To
+However, as we saw when we used `summary(surveys$HighestCare)`, there are about
+109 individuals for which the care information hasn't been recorded. To
 show them in the plot, we can turn the missing values into a factor
 level with the `addNA()` function. We will also have to give the new
 factor level a label. We are going to work with a copy of the `sex`
 column, so we're not modifying the working copy of the data frame:
 
 ```{r, results=TRUE, purl=FALSE}
-sex <- surveys$sex
-levels(sex)
-sex <- addNA(sex)
-levels(sex)
-head(sex)
-levels(sex)[3] <- "undetermined"
-levels(sex)
-head(sex)
+care <- surveys$HighestCare
+levels(care)
+care <- addNA(care)
+levels(care)
+head(care)
+levels(care)[5] <- "undetermined"
+levels(care)
+head(care)
 ```
 
 Now we can plot the data again, using `plot(sex)`.
 
 ```{r, echo=FALSE, purl=FALSE, results=TRUE}
-plot(sex)
+plot(care)
 ```
 
 ::: challenge
 ### Challenge
 
--   Rename "F" and "M" to "female" and "male" respectively.
+-   Rename "Neg" to "Negative".
 -   Now that we have renamed the factor level to "undetermined", can you
     recreate the barplot such that "undetermined" is first (before
-    "female")?
+    "CCU")?
 
 ::: solution
 ```{r, answer=TRUE, purl=FALSE}
-levels(sex)[1:2] <- c("female", "male")
-sex <- factor(sex, levels = c("undetermined", "female", "male"))
-plot(sex)
+levels(care)[3] <- "Negative"
+care <- factor(care, levels = c("undetermined", "Negative", "CCU", "Floor", "Outpatient"))
+plot(care)
 ```
 :::
 :::
@@ -638,9 +636,10 @@ plot(sex)
 ```{r wrong-order, results="show", echo=FALSE, purl=TRUE}
 ## Challenges
 ##
-## * Rename "F" and "M" to "female" and "male" respectively.
-## * Now that we have renamed the factor level to "undetermined", can you recreate the
-##   barplot such that "undetermined" is first (before "female")
+##  *   Rename "Neg" to "Negative".
+##  *   Now that we have renamed the factor level to "undetermined", can you
+##      recreate the barplot such that "undetermined" is first (before
+##      "CCU")?
 ```
 
 ::: challenge
@@ -714,142 +713,4 @@ column that should only contain numbers).
 Learn more in this [RStudio
 tutorial](https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio)
 
-## Formatting dates
-
-A common issue that new (and experienced!) R users have is converting
-date and time information into a variable that is suitable for analyses.
-One way to store date information is to store each component of the date
-in a separate column. Using `str()`, we can confirm that our data frame
-does indeed have a separate column for day, month, and year, and that
-each of these columns contains integer values.
-
-```{r, eval=FALSE, purl=FALSE}
-str(surveys)
-```
-
-We are going to use the `ymd()` function from the package
-**`lubridate`** (which belongs to the **`tidyverse`**; learn more
-[here](https://www.tidyverse.org/)). **`lubridate`** gets installed as
-part as the **`tidyverse`** installation. When you load the
-**`tidyverse`** (`library(tidyverse)`), the core packages (the packages
-used in most data analyses) get loaded. **`lubridate`** however does not
-belong to the core tidyverse, so you have to load it explicitly with
-`library(lubridate)`
-
-Start by loading the required package:
-
-```{r load-package, message=FALSE, purl=FALSE}
-library(lubridate)
-```
-
-The **`lubridate`** package has many useful functions for working with
-dates. These can help you extract dates from different string
-representations, convert between timezones, calculate time differences
-and more. You can find an overview of them in the [lubridate cheat
-sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf).
-
-Here we will use the function `ymd()`, which takes a vector representing
-year, month, and day, and converts it to a `Date` vector. `Date` is a
-class of data recognized by R as being a date and can be manipulated as
-such. The argument that the function requires is flexible, but, as a
-best practice, is a character vector formatted as "YYYY-MM-DD".
-
-Let's create a date object and inspect the structure:
-
-```{r, purl=FALSE}
-my_date <- ymd("2015-01-01")
-str(my_date)
-```
-
-Now let's paste the year, month, and day separately - we get the same
-result:
-
-```{r, purl=FALSE}
-# sep indicates the character to use to separate each component
-my_date <- ymd(paste("2015", "1", "1", sep = "-")) 
-str(my_date)
-```
-
-Now we apply this function to the surveys dataset. Create a character
-vector from the `year`, `month`, and `day` columns of `surveys` using
-`paste()`:
-
-```{r, purl=FALSE}
-paste(surveys$year, surveys$month, surveys$day, sep = "-")
-```
-
-This character vector can be used as the argument for `ymd()`:
-
-```{r, purl=FALSE}
-ymd(paste(surveys$year, surveys$month, surveys$day, sep = "-"))
-```
-
-There is a warning telling us that some dates could not be parsed
-(understood) by the `ymd()` function. For these dates, the function has
-returned `NA`, which means they are treated as missing values. We will
-deal with this problem later, but first we add the resulting `Date`
-vector to the `surveys` data frame as a new column called `date`:
-
-```{r, purl=FALSE}
-surveys$date <- ymd(paste(surveys$year, surveys$month, surveys$day, sep = "-"))
-str(surveys) # notice the new column, with 'date' as the class
-```
-
-Let's make sure everything worked correctly. One way to inspect the new
-column is to use `summary()`:
-
-```{r, results=TRUE, purl=FALSE}
-summary(surveys$date)
-```
-
-Let's investigate why some dates could not be parsed.
-
-We can use the functions we saw previously to deal with missing data to
-identify the rows in our data frame that are failing. If we combine them
-with what we learned about subsetting data frames earlier, we can
-extract the columns "year,"month", "day" from the records that have `NA`
-in our new column `date`. We will also use `head()` so we don't clutter
-the output:
-
-```{r, results=TRUE, purl=FALSE}
-missing_dates <- surveys[is.na(surveys$date), c("year", "month", "day")]
-
-head(missing_dates)
-```
-
-Why did these dates fail to parse? If you had to use these data for your
-analyses, how would you deal with this situation?
-
-The answer is because the dates provided as input for the `ymd()`
-function do not actually exist. If we refer to the output we got above,
-September and April only have 30 days, not 31 days as it is specified in
-our dataset.
-
-There are several ways you could deal with situation:
-
--   If you have access to the raw data (e.g., field sheets) or
-    supporting information (e.g., field trip reports/logs), check them
-    and ensure the electronic database matches the information in the
-    original data source.
--   If you are able to contact the person responsible for collecting the
-    data, you could refer to them and ask for clarification.
--   You could also check the rest of the dataset for clues about the
-    correct value for the erroneous dates.
--   If your project has guidelines on how to correct this sort of
-    errors, refer to them and apply any recommendations.
--   If it is not possible to ascertain the correct value for these
-    observations, you may want to leave them as missing data.
-
-Regardless of the option you choose, it is important that you document
-the error and the corrections (if any) that you apply to your data.
-
-::: keypoints
--   Use `read.csv` to read tabular data in R.
--   A data frame is the representation of data in the format of a table
-    where the columns are vectors that all have the same length.
--   `dplyr` provides many methods for inspecting and summarizing data in
-    data frames.
--   Use factors to represent categorical data in R.
--   The **`lubridate`** package has many useful functions for working
-    with dates.
 :::
