@@ -1,9 +1,9 @@
 ---
-title: Starting with data
-author: Data Carpentry contributors
+title: "Starting with data"
+author: "Data Carpentry contributors"
 minutes: 20
-editor_options: 
-  markdown: 
+editor_options:
+  markdown:
     wrap: 72
 ---
 
@@ -122,7 +122,7 @@ Now we can use the functions from the **`tidyverse`** package. Let's use
 about data frames later):
 
 ```{r, eval=TRUE, purl=FALSE}
-surveys <- read_csv("data_raw/inputData.csv")
+surveys <- read_csv("data_raw/Bolouri_2021_subset.csv")
 ```
 
 When you execute `read_csv` on a data file, it looks through the first
@@ -400,7 +400,7 @@ surveys_200 <- surveys[200, ]
 n_rows <- nrow(surveys)
 surveys_last <- surveys[n_rows, ]
 ## 3.
-surveys_middle <- surveys[n_rows / 2, ]
+surveys_middle <- surveys[round(n_rows/2), ]
 ## 4.
 surveys_head <- surveys[-(7:n_rows), ]
 ```
@@ -521,12 +521,12 @@ in our example dataset).
 
 ::: solution
 ```{r, answer=TRUE, purl=FALSE}
-data$sex <- factor(data$sex, levels = c("male","female"))
-levels(data$sex)
-data$HighestCare <- factor(data$HighestCare, levels = c("Neg", "Floor", "CCU", "Outpatient"))
-levels(data$HighestCare)
-summary(data$sex)
-summary(data$HighestCare)
+surveys$sex <- factor(surveys$sex, levels = c("male","female"))
+levels(surveys$sex)
+surveys$HighestCare <- factor(surveys$HighestCare, levels = c("Neg", "Floor", "CCU", "Outpatient"))
+levels(surveys$HighestCare)
+summary(surveys$sex)
+summary(surveys$HighestCare)
 ```
 :::
 :::
@@ -653,9 +653,9 @@ plot(care)
 
 ```{r, eval=FALSE, purl=FALSE}
 animal_data <- data.frame(
-          animal = c(dog, cat, sea cucumber, sea urchin),
-          feel = c("furry", "squishy", "spiny"),
-          weight = c(45, 8 1.1, 0.8)
+          animal = c("dog", "cat", "sea cucumber","sea urchin"),
+          feel = c("furry", "furry", "squishy", "spiny"),
+          weight = c(45, 8, 1.1, 0.8)
           )
 ```
 
@@ -664,9 +664,9 @@ animal_data <- data.frame(
 ##  There are a few mistakes in this hand-crafted `data.frame`,
 ##  can you spot and fix them? Don't hesitate to experiment!
 animal_data <- data.frame(
-      animal = c(dog, cat, sea cucumber, sea urchin),
-      feel = c("furry", "squishy", "spiny"),
-      weight = c(45, 8 1.1, 0.8)
+      animal = c("dog", "cat", "sea cucumber", "sea urchin"),
+      feel = c("furry", "furry", "squishy", "spiny"),
+      weight = c(45, 8, 1.1, 0.8)
       )
 ```
 
