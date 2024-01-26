@@ -2,7 +2,7 @@
 
 ## General Information
 
-The Bioinformatics Group is organizing an R programming workshop this June. The workshop is geared towards people that have never programmed or have limited programming experience in R. We will teach how to organize your code, your data, and produce some common plots and figures.
+The Bioinformatics Group is organizing an R programming workshop this Februrary. The workshop is geared towards people that have never programmed or have limited programming experience in R. We will teach how to organize your code, your data, and produce some common plots and figures.
 
 The workshop curriculum is largely based on the publicly available Data Carpentry workshop ["Data Analysis and Visualization in R for Ecologists"](https://datacarpentry.org/R-ecology-lesson/). However, the curriculum has been tailored to work with the COVID-19 CYTOF and clinical metadata data set provided by Hamid Bolouri and Cate Speake published in [JCI](https://doi.org/10.1172/JCI143648):
 
@@ -14,7 +14,7 @@ For more information regarding the mission and purpose of Data Carpentry visit t
 
 ## Details
 
-**When and Where:** The workshop will run for 4 mornings (9 – 12pm), June 13 to 16 and will be in person in 4N. Though we recognize the commitment of a 4 morning workshop, we ask attendees to attend all sessions as the curriculum is designed to progressively build upon skills from prior days.
+**When and Where:** The workshop will run for 4 mornings (9 – 12pm), Feb 12 to 15 and will be in person in 4N. Though we recognize the commitment of a 4 morning workshop, we ask attendees to attend all sessions as the curriculum is designed to progressively build upon skills from prior days.
 
 **Requirements:** Participants must bring a personal or BRI-provided laptop with a Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that you have the ability to install software on. You should have a few specific software packages installed (listed below). For any questions regarding installing software please contact the BRI helpdesk.
 
