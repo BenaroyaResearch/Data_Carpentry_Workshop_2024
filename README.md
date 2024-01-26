@@ -22,7 +22,7 @@ For more information regarding the mission and purpose of Data Carpentry visit t
 
 ## Before the Workshop
 
-1. Complete the Pre-Workshop survey by **Wednesday June 8th**. [Click here to take the google survey](https://forms.gle/wSS6KNQkGq3kjUCZ6).
+1. Complete the Pre-Workshop survey by **Friday Feb 2nd**. [Click here to take the google survey]([https://forms.gle/wSS6KNQkGq3kjUCZ6](https://forms.gle/asMiP1DRyo76TyQEA)).
 
 2. Install R and RStudio on your machine. Follow the instructions [here](https://datacarpentry.org/R-ecology-lesson/#Install_R_and_RStudio).
 
