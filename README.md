@@ -1,4 +1,4 @@
-# Data Carpentry Workshop 2022
+# Data Carpentry Workshop 2024
 
 ## General Information
 
