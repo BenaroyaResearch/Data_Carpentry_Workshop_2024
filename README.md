@@ -71,7 +71,7 @@ Download a subsampled version of the publically available Bolouri et al., (2021)
 
 ## Collaborative Notes
 
-We will use this public, collaborative document <https://pad.riseup.net/p/BRI_Data_Carpentry_2022> for chatting, taking notes, and sharing URLs and bits of code. This collaborative document will expire 60 days from it's creation (May 13th, 2022).
+We will use this public, collaborative document <https://pad.riseup.net/p/BRI_Data_Carpentry_2024> for chatting, taking notes, and sharing URLs and bits of code. This collaborative document will expire 60 days from it's creation (May 13th, 2022).
 
 ## Schedule
 
