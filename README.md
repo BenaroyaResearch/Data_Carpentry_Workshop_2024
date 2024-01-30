@@ -18,7 +18,7 @@ For more information regarding the mission and purpose of Data Carpentry visit t
 
 **Requirements:** Participants must bring a personal or BRI-provided laptop with a Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that you have the ability to install software on. You should have a few specific software packages installed (listed below). For any questions regarding installing software please contact the BRI helpdesk.
 
-**Contact**: Please contact Erin Witkop <EWitkop@benaroyaresearch.org> for any questions regarding the schedule, workshop goals, or curriculum.
+**Contact**: Please contact Matthew Lawrance <mlawrance@benaroyaresearch.org> for any questions regarding the schedule, workshop goals, or curriculum.
 
 ## Before the Workshop
 
