@@ -2,7 +2,7 @@
 
 ## General Information
 
-The Bioinformatics Group is organizing an R programming workshop this Februrary. The workshop is geared towards people that have never programmed or have limited programming experience in R. We will teach how to organize your code, your data, and produce some common plots and figures.
+The Bioinformatics Group is organizing an R programming workshop this Februrary for BRI scientists and employees. The workshop is geared towards people that have never programmed or have limited programming experience in R. We will teach how to organize your code, your data, and produce some common plots and figures.
 
 The workshop curriculum is largely based on the publicly available Data Carpentry workshop ["Data Analysis and Visualization in R for Ecologists"](https://datacarpentry.org/R-ecology-lesson/). However, the curriculum has been tailored to work with the COVID-19 CYTOF and clinical metadata data set provided by Hamid Bolouri and Cate Speake published in [JCI](https://doi.org/10.1172/JCI143648):
 
