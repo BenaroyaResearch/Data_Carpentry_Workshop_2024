@@ -84,7 +84,7 @@ We will use this public, collaborative document <https://pad.riseup.net/p/BRI_Da
 | 9:00am         |Official Workshop Start/Introduction              | [Before we start](https://htmlpreview.github.io/?https://github.com/BenaroyaResearch/Data_Carpentry_Workshop_2024/blob/main/episodes/00-before-we-start.html)                                 |
 | 9:10am         |Introduction to R                                 | [Learn Rstudio!](https://htmlpreview.github.io/?https://github.com/BenaroyaResearch/Data_Carpentry_Workshop_2024/blob/main/episodes/01-intro-to-r.html) |
 | 10:30am-10:45am|BREAK                                             |                                                                                                      |
-| 10:45am-11:15am|Starting with Data in R (dataframes)              | <https://datacarpentry.org/R-ecology-lesson/02-starting-with-data.html>                              |
+| 10:45am-11:15am|Starting with Data in R (dataframes)              | [Starting with data](https://htmlpreview.github.io/?https://github.com/BenaroyaResearch/Data_Carpentry_Workshop_2024/blob/main/episodes/02-starting-with-data.html)                              |
 | 11:15am-12:00pm|Starting with Data in R Cont. (factors)           |                                                                                                      |
 | 12:00pm        |End of Day 1                                      |                                                                                                      |
 
