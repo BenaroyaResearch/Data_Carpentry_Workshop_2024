@@ -81,7 +81,7 @@ We will use this public, collaborative document <https://pad.riseup.net/p/BRI_Da
 | Time           | Topic                                            | Data Carpentry Curriculum Reference                                                                  |
 |:---------------|:------------------------------------------------:|:----------------------------------------------------------------------------------------------------:|
 | 8:30am         |Pre-Workshop Help                                 |                                                                                                      |
-| 9:00am         |Official Workshop Start/Introduction              | [before we start]<https://htmlpreview.github.io/?https://github.com/BenaroyaResearch/Data_Carpentry_Workshop_2024/blob/main/episodes/00-before-we-start.html>                                 |
+| 9:00am         |Official Workshop Start/Introduction              | [before we start](https://htmlpreview.github.io/?https://github.com/BenaroyaResearch/Data_Carpentry_Workshop_2024/blob/main/episodes/00-before-we-start.html)                                 |
 | 9:10am         |Introduction to R                                 | <https://datacarpentry.org/R-ecology-lesson/00-before-we-start.html#Knowing_your_way_around_RStudio> |
 | 10:30am-10:45am|BREAK                                             |                                                                                                      |
 | 10:45am-11:15am|Starting with Data in R (dataframes)              | <https://datacarpentry.org/R-ecology-lesson/02-starting-with-data.html>                              |
