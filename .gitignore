@@ -19,7 +19,6 @@ site/*
 # RStudio files
 .Rproj.user/
 # produced vignettes
-vignettes/*.html
 vignettes/*.pdf
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth
@@ -51,8 +50,6 @@ portal-database.sqlite
 _site/
 site_libs/
 img/R-ecology-*.png
-0*.html
-0*.md
 code-handout.R
 # output from linkchecker
 link_res.csv
