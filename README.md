@@ -1,8 +1,8 @@
-# Data Carpentry Workshop 2022
+# Data Carpentry Workshop 2024
 
 ## General Information
 
-The Bioinformatics Group is organizing an R programming workshop this June. The workshop is geared towards people that have never programmed or have limited programming experience in R. We will teach how to organize your code, your data, and produce some common plots and figures.
+The Bioinformatics Group is organizing an R programming workshop this Februrary for BRI scientists and employees. The workshop is geared towards people that have never programmed or have limited programming experience in R. We will teach how to organize your code, your data, and produce some common plots and figures. 
 
 The workshop curriculum is largely based on the publicly available Data Carpentry workshop ["Data Analysis and Visualization in R for Ecologists"](https://datacarpentry.org/R-ecology-lesson/). However, the curriculum has been tailored to work with the COVID-19 CYTOF and clinical metadata data set provided by Hamid Bolouri and Cate Speake published in [JCI](https://doi.org/10.1172/JCI143648):
 
@@ -14,15 +14,15 @@ For more information regarding the mission and purpose of Data Carpentry visit t
 
 ## Details
 
-**When and Where:** The workshop will run for 4 mornings (9 – 12pm), June 13 to 16 and will be in person in 4N. Though we recognize the commitment of a 4 morning workshop, we ask attendees to attend all sessions as the curriculum is designed to progressively build upon skills from prior days.
+**When and Where:** The workshop will run for 4 mornings (9 – 12pm), Feb 12 to 15 and will be in person in 4N. Though we recognize the commitment of a 4 morning workshop, we ask attendees to attend all sessions as the curriculum is designed to progressively build upon skills from prior days. As of 2/1/2024, course enrollment is full and due to space constraints, we cannot accommodate additional participants. However, if you would like to be added to the waitlist, please reach out. 
 
 **Requirements:** Participants must bring a personal or BRI-provided laptop with a Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that you have the ability to install software on. You should have a few specific software packages installed (listed below). For any questions regarding installing software please contact the BRI helpdesk.
 
-**Contact**: Please contact Erin Witkop <EWitkop@benaroyaresearch.org> for any questions regarding the schedule, workshop goals, or curriculum.
+**Contact**: Please contact Matthew Lawrance <mlawrance@benaroyaresearch.org> for any questions regarding the schedule, workshop goals, or curriculum.
 
 ## Before the Workshop
 
-1. Complete the Pre-Workshop survey by **Wednesday June 8th**. [Click here to take the google survey](https://forms.gle/wSS6KNQkGq3kjUCZ6).
+1. Complete the Pre-Workshop survey by **Friday Feb 2nd**. [Click here to take the google survey](https://forms.gle/asMiP1DRyo76TyQEA).
 
 2. Install R and RStudio on your machine. Follow the instructions [here](https://datacarpentry.org/R-ecology-lesson/#Install_R_and_RStudio).
 
@@ -71,7 +71,7 @@ Download a subsampled version of the publically available Bolouri et al., (2021)
 
 ## Collaborative Notes
 
-We will use this public, collaborative document <https://pad.riseup.net/p/BRI_Data_Carpentry_2022> for chatting, taking notes, and sharing URLs and bits of code. This collaborative document will expire 60 days from it's creation (May 13th, 2022).
+We will use this public, collaborative document <https://pad.riseup.net/p/BRI_Data_Carpentry_2024> for chatting, taking notes, and sharing URLs and bits of code. This collaborative document will expire 60 days from it's creation (May 13th, 2022).
 
 ## Schedule
 
